@@ -1,0 +1,23 @@
+<h1>Listing articles</h1>
+ 
+<%=link_to 'New Article',article_path('new') %> <!--to get to the "new" view, you have to stick it as a parameter of the method -->
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Show', article_path(article) %></td><!--the parameter here is an integer, it seems-->
+      <td><%= link_to 'Edit', article_path('edit') %></td>
+      <td><%=link_to 'Destroy', article_path(article),
+      method: :delete, 
+      data: {confirm: 'Are you sure?'}%></td>
+    </tr>
+  <% end %>
+</table>
